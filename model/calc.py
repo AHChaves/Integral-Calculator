@@ -2,18 +2,10 @@ import re
 
 # Inicializa as listas para armazenar os monômios, coeficientes, expoentes e derivadas
 monomios = []
-coeficientes = []
-expoentes = []
-derivadas = []
-raizes_refinadas = []
-
 
 def separar_monomios(string_do_usuario):
     monomios.clear()
-    coeficientes.clear()
-    expoentes.clear()
-    derivadas.clear()
-    raizes_refinadas.clear()
+
     if string_do_usuario[0] not in '+-':
         string_do_usuario = '+' + string_do_usuario
 
@@ -55,14 +47,8 @@ def calcularFuncao(array, numero):
         first_term = False
     return somaFuncao
 
-def Calcula_Integral():
-    a = int(input("Informe o valor inicial do intervalo: "))
-    b = int(input("Informe o valor final do intervalo: "))
-    n = 2000
-    
+def Calcula_Integral(funcao, a, b, n):
     delta_X = (b-a)/n
-    
-    funcao = input("Informe a funcao: ")
     
     separar_monomios(funcao)
     soma = 0
@@ -71,7 +57,7 @@ def Calcula_Integral():
         funcao_no_ponto = calcularFuncao(monomios, ponto_dir)
         soma += funcao_no_ponto * delta_X
 
-    print(f'a area eh {soma} ')
+    return "O resultado da soma de riemann é " + '{0:.4g}'.format(soma)
     
 if __name__ == '__main__':
     Calcula_Integral()
