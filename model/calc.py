@@ -16,8 +16,6 @@ def separar_monomios(string_do_usuario):
 
     return mon
 
-
-
 def calcularFuncao(array, numero):
     somaFuncao = 0
     first_term = True
@@ -47,17 +45,25 @@ def calcularFuncao(array, numero):
         first_term = False
     return somaFuncao
 
-def Calcula_Integral(funcao, a, b, n):
+def Somatorio(a, init, end, delta_X):
+    soma = 0
+    for i in range(init, end):
+        ponto = a + i*delta_X
+        funcao_no_ponto = calcularFuncao(monomios, ponto)
+        soma += funcao_no_ponto * delta_X
+        
+    return soma
+
+def Calcula_Integral(funcao, a, b, n, loc):
     delta_X = (b-a)/n
     
     separar_monomios(funcao)
-    soma = 0
-    for i in range(1, n):
-        ponto_dir= i/n
-        funcao_no_ponto = calcularFuncao(monomios, ponto_dir)
-        soma += funcao_no_ponto * delta_X
+    if loc == "esquerda":
+        soma = Somatorio(a, 0, n-1, delta_X)
+    else:
+        soma = Somatorio(a, 1, n, delta_X)
 
-    return "O resultado da soma de riemann é " + '{0:.4g}'.format(soma)
-    
+    return "O resultado da soma de riemann é " + '{0:.5g}'.format(soma)
+                                                                                                                                                                   
 if __name__ == '__main__':
     Calcula_Integral()

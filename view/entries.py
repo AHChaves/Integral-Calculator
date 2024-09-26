@@ -100,5 +100,5 @@ def Insert_pane(frame, resultFrame):
     funcao_etr.grid(row=5, column=0, sticky="we", padx=10)
 
     calculate_btn = ctk.CTkButton(frame, width=90, height=30, font=fontepadrao, text="Calculate", 
-                                  command=lambda: ctr.Calcula_Integral(funcao_etr.get(), inicio_etr.get(), fim_etr.get(), n_value_opt.get(), resultFrame))
+                                  command=lambda: ctr.Calcula_Integral(funcao_etr.get(), inicio_etr.get(), fim_etr.get(), n_value_opt.get(), side_opt.get(), resultFrame))
     calculate_btn.grid(row=5, column=1, sticky="e")
