@@ -12,8 +12,8 @@ def Calcula_Integral(funcao, inicio, fim, divisoes, loc_ponto, frame):
         end = int(fim)
         n = int(divisoes)
         
-        resultado = clc.Calcula_Integral(funcao, init, end, n, loc_ponto)
+        resultado, delta_x, val_ponto = clc.Calcula_Integral(funcao, init, end, n, loc_ponto)
         
         Frame_Cleaner(frame)
         
-        rst.Set_Results(resultado, frame)
+        rst.Set_Results(resultado, frame, delta_x, val_ponto)

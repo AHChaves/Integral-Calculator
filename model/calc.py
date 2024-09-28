@@ -52,18 +52,18 @@ def Somatorio(a, init, end, delta_X):
         funcao_no_ponto = calcularFuncao(monomios, ponto)
         soma += funcao_no_ponto * delta_X
         
-    return soma
+    return soma, ponto
 
 def Calcula_Integral(funcao, a, b, n, loc):
     delta_X = (b-a)/n
     
     separar_monomios(funcao)
     if loc == "esquerda":
-        soma = Somatorio(a, 0, n-1, delta_X)
+        soma, ponto = Somatorio(a, 0, n-1, delta_X)
     else:
-        soma = Somatorio(a, 1, n, delta_X)
+        soma, ponto = Somatorio(a, 1, n, delta_X)
 
-    return "O resultado da soma de riemann é " + '{0:.5g}'.format(soma)
+    return "O resultado da soma de riemann é " + '{0:.5g}'.format(soma), "O valor de delta x é " + format(delta_X), "O valor do ponto x(i) é: " + format(ponto)
                                                                                                                                                                    
 if __name__ == '__main__':
     Calcula_Integral()
